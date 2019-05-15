@@ -9,6 +9,31 @@
     <packaging>jar</packaging>
     <version>1.0</version>
 
+    <name>rpsFX</name>
+    <description>Rock-Paper-Scissors game JavaFX implementation</description>
+    <developers>
+        <developer>
+            <id>matt</id>
+            <name>Papp Mate</name>
+            <email>matee.papp@gmail.com</email>
+        </developer>
+    </developers>
+
+    <organization>
+        <name>Faculty of Informatics, University of Debrecen</name>
+    </organization>
+    <inceptionYear>2019</inceptionYear>
+    <licenses>
+        <license>
+            <name>GNU General Public License Version 3.0</name>
+            <url>http://www.gnu.org/licenses/gpl-3.0</url>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:https://github.com/pappmatee/rpsFX.git</connection>
+        <url>https://github.com/pappmatee/rpsFX</url>
+    </scm>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
