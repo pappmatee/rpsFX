@@ -1,6 +1,12 @@
 # rpsFX
 
-Rock-Paper-Scissors game written in Java including JavaFX GUI
+Rock-Paper-Scissors game
+Written in Java including JavaFX GUI
+
+## Gamemodes
+
+* Player vs Computer - Randomized Computer choices
+* Player vs Player - Including a Server, using TCP Sockets
 
 ## Built With
 
