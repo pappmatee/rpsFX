@@ -12,6 +12,7 @@ Written in Java including JavaFX GUI
 
 * [JavaFX](https://openjfx.io/) - GUI
 * [Maven](https://maven.apache.org/) - Dependency Management
+* [Socket](https://docs.oracle.com/javase/7/docs/api/java/net/Socket.html) - Server
 
 ## Authors
 
