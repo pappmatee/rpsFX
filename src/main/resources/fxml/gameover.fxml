@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameOverController">
+   <children>
+      <ImageView fitHeight="80.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/rpslogo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="resultLabel" alignment="CENTER" layoutY="126.0" prefHeight="80.0" prefWidth="600.0" style="-fx-background-color: e7e7e7;" text="GAME OVER" textAlignment="CENTER">
+         <font>
+            <Font name="Chivo Bold" size="30.0" />
+         </font>
+      </Label>
+      <Button fx:id="leaderboardButton" contentDisplay="TOP" layoutX="242.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleLeaderboardButton" style="-fx-background-color: e7e7e7;" text="LEADERBOARD">
+         <graphic>
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/leaderboard.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="rematchButton" contentDisplay="TOP" layoutX="122.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleRematchButton" style="-fx-background-color: e7e7e7;" text="REMATCH">
+         <graphic>
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/rematch.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="exitButton" contentDisplay="TOP" layoutX="362.0" layoutY="216.0" mnemonicParsing="false" onAction="#handleExitButton" style="-fx-background-color: e7e7e7;" text="EXIT">
+         <graphic>
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/giveupicon.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
