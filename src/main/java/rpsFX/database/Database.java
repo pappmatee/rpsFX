@@ -16,6 +16,7 @@ import rpsFX.state.Player;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
@@ -46,6 +47,8 @@ public class Database {
      * @param player specified player object.
      */
     public void createXML(Player player) {
+
+        data.clear();
 
         try {
             DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
@@ -86,8 +89,11 @@ public class Database {
     public void parseXML() {
         File xmlFile = new File(rootPath + "leaderboard.xml");
 
+        data.clear();
+
         try {
             if (xmlFile.exists()) {
+                logger.info("leaderboard.xml exists, ready to parse...");
                 DocumentBuilderFactory db = DocumentBuilderFactory.newInstance();
                 DocumentBuilder dBuilder = db.newDocumentBuilder();
                 Document doc = dBuilder.parse(xmlFile);
@@ -103,15 +109,16 @@ public class Database {
                     if (nNode.getNodeType() == Node.ELEMENT_NODE){
                         Element element = (Element) nNode;
                         leaderboard.setNickname(element.getElementsByTagName("nickname").item(0).getTextContent());
-                        System.out.println(element.getElementsByTagName("nickname").item(0).getTextContent());
                         leaderboard.setScore(Integer.parseInt(element.getElementsByTagName("score").item(0).getTextContent()));
-                        System.out.println(element.getElementsByTagName("score").item(0).getTextContent());
                     }
                     data.add(leaderboard);
                 }
-            }
 
-            logger.info("leaderboard.xml parsed successfully.");
+                logger.info("leaderboard.xml parsed successfully.");
+
+            } else {
+                logger.error("leaderboard.xml not exists, failed to parse...");
+            }
 
         } catch (IOException | SAXException | ParserConfigurationException ex) {
             logger.error("Exception: " + ex);
@@ -127,7 +134,7 @@ public class Database {
 
         try {
             if (xmlFile.exists()) {
-                System.out.println("file exists");
+                logger.info("leaderboard.xml exists, ready to write...");
                 DocumentBuilderFactory db = DocumentBuilderFactory.newInstance();
                 DocumentBuilder dBuilder = db.newDocumentBuilder();
                 Document doc = dBuilder.parse(xmlFile);
@@ -135,6 +142,8 @@ public class Database {
                 Element rootElement = doc.getDocumentElement();
 
                 Element playerElement = doc.createElement("player");
+
+                rootElement.appendChild(playerElement);
 
                 Element nameElement = doc.createElement("nickname");
                 nameElement.appendChild(doc.createTextNode(player.getName()));
@@ -144,15 +153,19 @@ public class Database {
                 scoreElement.appendChild(doc.createTextNode(Integer.toString(player.getScore())));
                 playerElement.appendChild(scoreElement);
 
-                rootElement.appendChild(playerElement);
-
                 DOMSource domSource = new DOMSource(doc);
 
                 TransformerFactory transformerFactory = TransformerFactory.newInstance();
                 Transformer transformer = transformerFactory.newTransformer();
+                transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+                transformer.setOutputProperty(OutputKeys.METHOD, "xml");
+                transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+                transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
 
                 StreamResult streamResult = new StreamResult(xmlFile);
                 transformer.transform(domSource, streamResult);
+            } else {
+                createXML(player);
             }
 
             logger.info("leaderboard.xml edited successfully.");
