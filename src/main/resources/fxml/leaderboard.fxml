@@ -37,8 +37,8 @@
       </AnchorPane>
       <TableView fx:id="leaderboardTable" editable="true" layoutY="138.0" prefHeight="262.0" prefWidth="600.0">
          <columns>
-            <TableColumn fx:id="player" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" resizable="false" text="Player" />
-            <TableColumn fx:id="victories" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" resizable="false" text="Victories" />
+            <TableColumn fx:id="player" editable="false" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" resizable="false" text="Player" />
+            <TableColumn fx:id="victories" editable="false" maxWidth="300.0" minWidth="300.0" prefWidth="300.0" resizable="false" text="Victories" />
          </columns>
       </TableView>
    </children>
