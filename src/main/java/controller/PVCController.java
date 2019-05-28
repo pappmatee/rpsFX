@@ -54,6 +54,8 @@ public class PVCController {
 
     GameManager gameManager = new GameManager();
 
+    Database db = new Database();
+
     boolean isGameOver = false;
 
     /**
@@ -68,6 +70,9 @@ public class PVCController {
             player.setChoice(Choice.ROCK);
             computer.setChoice(ChoiceManager.isComputer());
 
+            logger.info("Player choice: " + player.getChoice());
+            logger.info("Computer choice: " + computer.getChoice());
+
             switch (computer.getChoice()) {
                 case ROCK: enemyChoiceImg.setImage(rockIcon); break;
                 case PAPER: enemyChoiceImg.setImage(paperIcon); break;
@@ -81,7 +86,6 @@ public class PVCController {
             enemyScore.setText(Integer.toString(computer.getScore()));
 
             if (isGameOver) {
-                Database db = new Database();
                 db.writeXML(player);
                 db.parseXML();
 
@@ -115,6 +119,9 @@ public class PVCController {
             player.setChoice(Choice.PAPER);
             computer.setChoice(ChoiceManager.isComputer());
 
+            logger.info("Player choice: " + player.getChoice());
+            logger.info("Computer choice: " + computer.getChoice());
+
             switch (computer.getChoice()) {
                 case ROCK: enemyChoiceImg.setImage(rockIcon); break;
                 case PAPER: enemyChoiceImg.setImage(paperIcon); break;
@@ -125,6 +132,9 @@ public class PVCController {
             isGameOver = gameManager.isFinished(player, computer, 10);
 
             if (isGameOver) {
+                db.writeXML(player);
+                db.parseXML();
+
                 Parent root = FXMLLoader.load(getClass().getResource("/fxml/gameover.fxml"));
                 Scene resultScene = new Scene(root);
 
@@ -157,6 +167,9 @@ public class PVCController {
             player.setChoice(Choice.SCISSORS);
             computer.setChoice(ChoiceManager.isComputer());
 
+            logger.info("Player choice: " + player.getChoice());
+            logger.info("Computer choice: " + computer.getChoice());
+
             switch (computer.getChoice()) {
                 case ROCK: enemyChoiceImg.setImage(rockIcon); break;
                 case PAPER: enemyChoiceImg.setImage(paperIcon); break;
@@ -167,6 +180,9 @@ public class PVCController {
             isGameOver = gameManager.isFinished(player, computer, 10);
 
             if (isGameOver) {
+                db.writeXML(player);
+                db.parseXML();
+
                 Parent root = FXMLLoader.load(getClass().getResource("/fxml/gameover.fxml"));
                 Scene resultScene = new Scene(root);
 
