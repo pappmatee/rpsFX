@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import rpsFX.database.Database;
@@ -63,9 +64,12 @@ public class LeaderboardController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        leaderboardTable.getItems().clear();
         player.setCellValueFactory(new PropertyValueFactory<>("Nickname"));
         victories.setCellValueFactory(new PropertyValueFactory<>("Score"));
         leaderboardTable.setItems(Database.data);
+        victories.setComparator(victories.getComparator().reversed());
+        leaderboardTable.getSortOrder().add(victories);
     }
 }
 ///CLOVER:ON
