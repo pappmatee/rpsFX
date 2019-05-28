@@ -71,6 +71,7 @@ public class PVPController {
             switch (client.playerResult) {
                 case "WIN": player.setScore(player.getScore() + 1); break;
                 case "LOSE": enemy.setScore(enemy.getScore() + 1); break;
+                case "DRAW": player.setScore(player.getScore() + 1); enemy.setScore(enemy.getScore() + 1); break;
                 case "OVER": isGameOver = true; break;
             }
 
@@ -112,6 +113,7 @@ public class PVPController {
             switch (client.playerResult) {
                 case "WIN": player.setScore(player.getScore() + 1); break;
                 case "LOSE": enemy.setScore(enemy.getScore() + 1); break;
+                case "DRAW": player.setScore(player.getScore() + 1); enemy.setScore(enemy.getScore() + 1); break;
                 case "OVER": isGameOver = true; break;
             }
 
@@ -151,6 +153,7 @@ public class PVPController {
             switch (client.playerResult) {
                 case "WIN": player.setScore(player.getScore() + 1); break;
                 case "LOSE": enemy.setScore(enemy.getScore() + 1); break;
+                case "DRAW": player.setScore(player.getScore() + 1); enemy.setScore(enemy.getScore() + 1); break;
                 case "OVER": isGameOver = true; break;
             }
 
